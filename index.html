@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Focus Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+    <div class="header-block">
+        <h1>Digital Focus Room</h1>
+    </div>
+
+    <div id="autoplay-banner" class="autoplay-banner hidden">
+      🔇 Click anywhere on the page, then press Play again to enable audio.
+    </div>
+
+    <div class="branch branch-left" aria-hidden="true">
+      <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#1b2f28" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55">
+          <path d="M10 0 L60 90 L40 160 L70 260" />
+          <path d="M60 90 L110 60" />
+          <path d="M60 90 L100 130" />
+          <path d="M40 160 L90 150" />
+          <path d="M40 160 L10 200" />
+          <path d="M70 260 L110 240" />
+          <path d="M70 260 L40 290" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="branch branch-right" aria-hidden="true">
+      <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#1b2f28" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.55">
+          <path d="M190 0 L140 90 L160 160 L130 260" />
+          <path d="M140 90 L90 60" />
+          <path d="M140 90 L100 130" />
+          <path d="M160 160 L110 150" />
+          <path d="M160 160 L190 200" />
+          <path d="M130 260 L90 240" />
+          <path d="M130 260 L160 290" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- ===== Timer Mode Switcher ===== -->
+    <nav class="mode-switcher" aria-label="Timer mode selection">
+     <button class="mode-btn active" data-mode="focus" onclick="switchMode('focus')">Focus</button>
+     <button class="mode-btn" data-mode="short-break" onclick="switchMode('short-break')">Short Break</button>
+     <button class="mode-btn" data-mode="long-break" onclick="switchMode('long-break')">Long Break</button>
+   </nav>
+
+    <!-- ===== Main Layout: Timer (left) + Sounds (right) ===== -->
+    <div class="main-layout">
+
+        <!-- ===== Circular Timer ===== -->
+        <section class="timer-section" aria-label="Timer">
+          <div class="timer-ring-wrapper">
+            <svg class="timer-ring" width="280" height="280" viewBox="0 0 220 220">
+              <circle class="ring-track" cx="110" cy="110" r="90" fill="none" stroke-width="12" />
+              <circle class="ring-progress" cx="110" cy="110" r="90" fill="none" stroke-width="12"
+                stroke-linecap="round" transform="rotate(-90 110 110)" />
+            </svg>
+            <div class="timer-display">
+              <span id="time-remaining">25:00</span>
+              <span id="timer-mode-label" class="mode-label">Focus Time</span>
+            </div>
+          </div>
+
+          <div class="timer-controls">
+           <button id="start-pause-btn" class="control-btn primary" onclick="startPauseTimer()">Start</button>
+           <button id="reset-btn" class="control-btn secondary" onclick="resetTimer()">Reset</button>
+          </div>
+
+          <p id="focus-stats" class="focus-stats">Today: 0 min focused · 0 sessions</p>
+        </section>
+
+        <!-- ===== Ambient Sound Mixer ===== -->
+        <section class="sound-mixer" aria-label="Ambient sound mixer">
+         <h2>Ambient Sounds</h2>
+         <button id="master-toggle-btn" onclick="toggleAllTracks()">▶ Play All</button>
+         <div id="audio-grid" class="grid"></div>
+        </section>
+
+    </div>
+
+    <!-- ===== Quick Notes (full width) ===== -->
+    <section class="notepad-section" aria-label="Quick notes">
+      <h2>Quick Notes</h2>
+      <textarea
+        id="notepad"
+        class="notepad"
+        placeholder="Scribble here freely!"
+      ></textarea>
+    </section>
+
+    <div id="snow-container" aria-hidden="true"></div>
+
+</body>
+</html>

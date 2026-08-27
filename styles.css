@@ -1,0 +1,377 @@
+        @font-face {
+            font-family: "Sukajan Brush Demo";
+            src: url("assets/fonts/Sukajan Brush Demo.otf") format("opentype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-image: url("assets/images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #e1e1e6;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 20, 0.45);
+            z-index: -1;
+        }
+
+        .header-block {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .header-block p {
+            text-align: center;
+            margin-top: 0;
+            color: #e1e1e6;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 5px;
+            font-family: "Sukajan Brush Demo", -apple-system, sans-serif;
+            text-align: center;
+            font-size: 3.5rem;
+        }
+
+        .mode-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .mode-btn {
+            background: rgba(32, 32, 36, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #a1a1aa;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: auto;
+            transition: background 0.2s;
+        }
+        .mode-btn:hover {
+            background: rgba(41, 41, 46, 0.65);
+        }
+        .mode-btn.active {
+            background: #A7D8F0;
+            color: #0a1a24;
+            border-color: #A7D8F0;
+        }
+
+        .main-layout {
+            display: flex;
+            gap: 24px;
+            margin-top: 30px;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        #master-toggle-btn {
+            background: #A7D8F0;
+            color: #0a1a24;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            width: auto;
+            margin: 16px 0 8px;
+            transition: background 0.2s;
+        }
+        #master-toggle-btn:hover {
+            background: #8AC4E8;
+        }
+
+        .timer-section {
+            flex: 0 0 340px;
+            background: rgba(20, 25, 30, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 32px 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-self: stretch;
+        }
+        .timer-ring-wrapper {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+        }
+        .ring-track {
+            stroke: rgba(255, 255, 255, 0.15);
+        }
+        .ring-progress
+        {
+            stroke: #A7D8F0;
+            stroke-dasharray: 565.48;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 0.3s linear;
+        }
+        .timer-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        #time-remaining {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .mode-label {
+            display: block;
+            font-size: 0.85rem;
+            color: #a1a1aa;
+            margin-top: 4px;
+        }
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .control-btn {
+            width: auto;
+            padding: 10px 28px;
+        }
+        .control-btn.primary {
+            background: #A7D8F0;
+            color: #0a1a24;
+        }
+        .control-btn.primary:hover {
+            background: #8AC4E8;
+        }
+        .control-btn.secondary {
+            background: rgba(41, 41, 46, 0.65);
+            color: #fff;
+        }
+
+        .sound-mixer {
+            flex: 1;
+            background: rgba(20, 25, 30, 0.3);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .grid
+         { 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+         }
+        .audio-card
+         {
+             background: rgba(20, 25, 30, 0.25);
+             backdrop-filter: blur(10px);
+             -webkit-backdrop-filter: blur(10px);
+             border: 1px solid rgba(255, 255, 255, 0.12);
+             border-radius: 12px;
+             padding: 20px;
+             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+             transition: transform 0.2s, background 0.2s;
+             text-align: center;
+         }
+        .audio-card:hover
+         { 
+            transform: translateY(-4px);
+            background: rgba(30, 35, 40, 0.35);
+        }
+        .icon
+         { 
+            font-size: 2.5rem; margin-bottom: 10px; 
+        }
+         
+        .volume-slider {
+            width: 100%;
+            margin-top: 10px;
+            accent-color: #A7D8F0;
+            cursor: pointer;
+        }
+        .volume-label {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.8rem;
+            color: #a1a1aa;
+        }
+        button
+         { background: rgba(41, 41, 46, 0.6); color: #fff; border: none; padding: 8px 24px; 
+            border-radius: 6px; font-weight: 600; cursor: pointer; width: 100%; 
+            transition: background 0.2s; 
+        }
+        button:hover
+         { 
+            background: rgba(50, 50, 56, 0.75);
+         }
+        button.playing { background: #A7D8F0; color: #0a1a24; }
+
+        .sound-mixer h2 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #fff;
+            text-align: left;
+        }
+
+        .autoplay-banner {
+            background: rgba(58, 42, 26, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #ffcb6b;
+            border: 1px solid rgba(255, 203, 107, 0.25);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin: 16px auto;
+            max-width: 480px;
+            transition: opacity 0.3s ease;
+        }
+        .hidden {
+            display: none;
+        }
+
+        .focus-stats {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #a1a1aa;
+            text-align: center;
+        }
+
+        .notepad-section {
+            margin-top: 24px;
+            text-align: left;
+        }
+        .notepad-section h2 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #fff;
+            text-align: left;
+        }
+        .notepad {
+            width: 100%;
+            min-height: 250px;
+            margin-top: 12px;
+            background: rgba(20, 25, 30, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            color: #e1e1e6;
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+        .notepad:focus {
+            outline: none;
+            border-color: #A7D8F0;
+        }
+
+        @media (max-width: 760px) {
+            .main-layout {
+                flex-direction: column;
+            }
+            .timer-section {
+                flex: 1 1 auto;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+                .branch {
+            position: fixed;
+            top: 0;
+            width: 200px;
+            height: 300px;
+            pointer-events: none;
+            z-index: 2;
+            animation: sway 6s ease-in-out infinite;
+        }
+        .branch-left {
+            left: 0;
+            transform-origin: top left;
+        }
+        .branch-right {
+            right: 0;
+            transform-origin: top right;
+        }
+        .branch svg {
+            width: 100%;
+            height: 100%;
+        }
+        @keyframes sway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        /* Hide branches on smaller windows where there's no real empty margin */
+        @media (max-width: 1500px) {
+            .branch {
+                display: none;
+            }
+        }
+
+                #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10vh;
+            color: #fff;
+            opacity: 0.8;
+            user-select: none;
+            animation-name: snowfall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes snowfall {
+            0%   { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+            10%  { opacity: 0.8; }
+            50%  { transform: translate3d(var(--drift), 55vh, 0) rotate(180deg); }
+            90%  { opacity: 0.8; }
+            100% { transform: translate3d(0, 110vh, 0) rotate(360deg); opacity: 0; }
+        }
