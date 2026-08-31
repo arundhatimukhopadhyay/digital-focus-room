@@ -15,7 +15,7 @@ const AUDIO_TRACKS = [
     {
         id: "white-noise",
         name: "White Noise",
-        file: "assets/audio/soft white noise.mp3", // Ensure file name matches your folder!
+        file: "assets/audio/soft white noise.mp3", 
         icon: "💨"
     },
     {
@@ -46,9 +46,8 @@ const RING_CIRCUMFERENCE = 565.48;
 
 let timerInterval = null;
 
-// ============================================
+
 // Initialization
-// ============================================
 
 document.addEventListener("DOMContentLoaded", () => {
     initializeAudioTracks();
@@ -97,9 +96,7 @@ function initializeAudioTracks() {
     });
 }
 
-// ============================================
 // Audio Logic
-// ============================================
 
 function toggleTrack(trackId) {
     const audio = appState.audioInstances[trackId];
@@ -156,9 +153,7 @@ function showAutoplayBanner() {
     setTimeout(() => banner.classList.add("hidden"), 4000);
 }
 
-// ============================================
 // Timer Logic
-// ============================================
 
 function formatTime(totalSeconds) {
     const mins = Math.floor(totalSeconds / 60).toString().padStart(2, "0");
@@ -234,9 +229,7 @@ function switchMode(newMode) {
     updateRingProgress();
 }
 
-// ============================================
 // Storage & Notes
-// ============================================
 
 function recordCompletedFocusSession() {
     const key = `focusStats-${new Date().toISOString().split('T')[0]}`;
@@ -264,9 +257,7 @@ function handleNotesInput(event) {
     localStorage.setItem("digitalFocusRoom-notes", event.target.value);
 }
 
-// ============================================
 // Snowfall Effect
-// ============================================
 
 function createSnowfall() {
     const container = document.getElementById("snow-container");
