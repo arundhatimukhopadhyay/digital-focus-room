@@ -5,17 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Focus Room</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
     <script src="app.js" defer></script>
 </head>
 <body>
-
-    <div class="header-block">
-        <h1>Digital Focus Room</h1>
-    </div>
-
-    <div id="autoplay-banner" class="autoplay-banner hidden">
-      🔇 Click anywhere on the page, then press Play again to enable audio.
-    </div>
 
     <div class="branch branch-left" aria-hidden="true">
       <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
@@ -45,58 +38,77 @@
       </svg>
     </div>
 
-    <!-- ===== Timer Mode Switcher ===== -->
-    <nav class="mode-switcher" aria-label="Timer mode selection">
-     <button class="mode-btn active" data-mode="focus" onclick="switchMode('focus')">Focus</button>
-     <button class="mode-btn" data-mode="short-break" onclick="switchMode('short-break')">Short Break</button>
-     <button class="mode-btn" data-mode="long-break" onclick="switchMode('long-break')">Long Break</button>
-   </nav>
+    <div id="snow-container" aria-hidden="true"></div>
 
-    <!-- ===== Main Layout: Timer (left) + Sounds (right) ===== -->
-    <div class="main-layout">
+    <div class="study-trigger">
+      <button id="study-with-btn" onclick="startStudyRoom()">
+        <span class="study-icon">👥</span>
+        <span class="study-label">Study With Someone</span>
+      </button>
+    </div>
 
-        <!-- ===== Circular Timer ===== -->
-        <section class="timer-section" aria-label="Timer">
-          <div class="timer-ring-wrapper">
-            <svg class="timer-ring" width="280" height="280" viewBox="0 0 220 220">
-              <circle class="ring-track" cx="110" cy="110" r="90" fill="none" stroke-width="12" />
-              <circle class="ring-progress" cx="110" cy="110" r="90" fill="none" stroke-width="12"
-                stroke-linecap="round" transform="rotate(-90 110 110)" />
-            </svg>
-            <div class="timer-display">
-              <span id="time-remaining">25:00</span>
-              <span id="timer-mode-label" class="mode-label">Focus Time</span>
-            </div>
-          </div>
+    <div class="page-content">
 
-          <div class="timer-controls">
-           <button id="start-pause-btn" class="control-btn primary" onclick="startPauseTimer()">Start</button>
-           <button id="reset-btn" class="control-btn secondary" onclick="resetTimer()">Reset</button>
-          </div>
+        <div class="header-block">
+            <h1>Digital Focus Room</h1>
+        </div>
 
-          <p id="focus-stats" class="focus-stats">Today: 0 min focused · 0 sessions</p>
-        </section>
+        <div id="autoplay-banner" class="autoplay-banner hidden">
+          🔇 Click anywhere on the page, then press Play again to enable audio.
+        </div>
 
-        <!-- ===== Ambient Sound Mixer ===== -->
-        <section class="sound-mixer" aria-label="Ambient sound mixer">
-         <h2>Ambient Sounds</h2>
-         <button id="master-toggle-btn" onclick="toggleAllTracks()">▶ Play All</button>
-         <div id="audio-grid" class="grid"></div>
+        <!-- ===== Timer Mode Switcher ===== -->
+        <nav class="mode-switcher" aria-label="Timer mode selection">
+         <button class="mode-btn active" data-mode="focus" onclick="switchMode('focus')">Focus</button>
+         <button class="mode-btn" data-mode="short-break" onclick="switchMode('short-break')">Short Break</button>
+         <button class="mode-btn" data-mode="long-break" onclick="switchMode('long-break')">Long Break</button>
+       </nav>
+
+        <!-- ===== Main Layout: Timer (left) + Sounds (right) ===== -->
+        <div class="main-layout">
+
+            <!-- ===== Circular Timer ===== -->
+            <section class="timer-section" aria-label="Timer">
+              <div class="timer-ring-wrapper">
+                <svg class="timer-ring" width="280" height="280" viewBox="0 0 220 220">
+                  <circle class="ring-track" cx="110" cy="110" r="90" fill="none" stroke-width="12" />
+                  <circle class="ring-progress" cx="110" cy="110" r="90" fill="none" stroke-width="12"
+                    stroke-linecap="round" transform="rotate(-90 110 110)" />
+                </svg>
+                <div class="timer-display">
+                  <span id="time-remaining">25:00</span>
+                  <span id="timer-mode-label" class="mode-label">Focus Time</span>
+                </div>
+              </div>
+
+              <div class="timer-controls">
+               <button id="start-pause-btn" class="control-btn primary" onclick="startPauseTimer()">Start</button>
+               <button id="reset-btn" class="control-btn secondary" onclick="resetTimer()">Reset</button>
+              </div>
+
+              <p id="focus-stats" class="focus-stats">Today: 0 min focused · 0 sessions</p>
+            </section>
+
+            <!-- ===== Ambient Sound Mixer ===== -->
+            <section class="sound-mixer" aria-label="Ambient sound mixer">
+             <h2>Ambient Sounds</h2>
+             <button id="master-toggle-btn" onclick="toggleAllTracks()">▶ Play All</button>
+             <div id="audio-grid" class="grid"></div>
+            </section>
+
+        </div>
+
+        <!-- ===== Quick Notes (full width) ===== -->
+        <section class="notepad-section" aria-label="Quick notes">
+          <h2>Quick Notes</h2>
+          <textarea
+            id="notepad"
+            class="notepad"
+            placeholder="Scribble here freely!"
+          ></textarea>
         </section>
 
     </div>
-
-    <!-- ===== Quick Notes (full width) ===== -->
-    <section class="notepad-section" aria-label="Quick notes">
-      <h2>Quick Notes</h2>
-      <textarea
-        id="notepad"
-        class="notepad"
-        placeholder="Scribble here freely!"
-      ></textarea>
-    </section>
-
-    <div id="snow-container" aria-hidden="true"></div>
 
 </body>
 </html>

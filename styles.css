@@ -13,11 +13,9 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             color: #e1e1e6;
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
             text-align: center;
             min-height: 100vh;
+            margin: 0;
             position: relative;
         }
 
@@ -30,6 +28,13 @@
             height: 100%;
             background: rgba(10, 15, 20, 0.45);
             z-index: -1;
+        }
+
+        .page-content {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
         }
 
         .header-block {
@@ -315,7 +320,7 @@
             }
         }
 
-                .branch {
+        .branch {
             position: fixed;
             top: 0;
             width: 200px;
@@ -348,7 +353,7 @@
             }
         }
 
-                #snow-container {
+        #snow-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -374,4 +379,50 @@
             50%  { transform: translate3d(var(--drift), 55vh, 0) rotate(180deg); }
             90%  { opacity: 0.8; }
             100% { transform: translate3d(0, 110vh, 0) rotate(360deg); opacity: 0; }
+        }
+
+        /* ===== Study With Someone Trigger ===== */
+        .study-trigger {
+            position: absolute;
+            top: 460px;
+            left: 40px;
+            z-index: 3;
+        }
+        #study-with-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: rgba(20, 25, 30, 0.35);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.2s, background 0.2s;
+        }
+        #study-with-btn:hover {
+            transform: translateY(-4px);
+            background: rgba(30, 35, 40, 0.5);
+        }
+        .study-icon {
+            font-size: 2rem;
+        }
+        .study-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 1500px) {
+            .study-trigger {
+                display: none;
+            }
         }

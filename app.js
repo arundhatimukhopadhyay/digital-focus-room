@@ -284,3 +284,16 @@ function createSnowfall() {
         container.appendChild(flake);
     }
 }
+
+// Study Room Launcher
+
+function generateRoomId() 
+{
+    return Math.random().toString(36).substring(2, 9); // short random string
+}
+
+function startStudyRoom() 
+{
+    const roomId = generateRoomId();
+    window.open(`room.html?room=${roomId}&host=true`, "_blank");
+}
